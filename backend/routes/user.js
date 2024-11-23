@@ -55,14 +55,15 @@ router1.post("/signin",async function(req,res,next){
     username,
     password
   })
+  const name = user.firstName
   if(user){
     console.log(user._id);
     const token = jwt.sign({
         userId: user._id 
     },JWT_SECRET)
-
+    //complete uptp signin if i want to get token can do signin to get token and also check the balance in account using postman not just need work on balance frontend
     res.json({
-        token
+        token,name
     })
   }
   else{
@@ -73,7 +74,7 @@ router1.post("/signin",async function(req,res,next){
 })
 
     router1.get("/find",async function(req,res,next){
-        const filter = req.body.filter || "";
+        const filter = req.query.filter || "";
         const users =await User.find({
             $or : [{
                 firstName : {
