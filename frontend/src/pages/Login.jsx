@@ -16,7 +16,7 @@ export const Login = () => {
             username,
             password
         })
-        console.log(response.data.name)
+        // console.log(response.data.name)
         localStorage.setItem("token",response.data.token)
         navigate("/dashboard?name="+response.data.name);
     } 

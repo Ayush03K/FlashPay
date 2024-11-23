@@ -8,6 +8,7 @@ import { Users } from "../components/Users"
 export const Dashboard = () => {
     const [searchParams] = useSearchParams();
     const user = searchParams.get("name");
+    // console.log(user)
     return (
     <div className="p-8">
         <Appbar user={user}/>

@@ -15,6 +15,7 @@ export function Users(){
                 setUsers(response.data.users)
             })
     }, [filter])
+
     return (
         <div className="p-5 text-lg ">
             <Input placeholder={"Search Users"} label={"Users"} onChange={(e) => {
@@ -22,7 +23,7 @@ export function Users(){
             }}/>
             <div >
                 <div >
-                    {users.map((user) => <User user={user} />)}
+                    {users.map((user) => <User  user={user} />)}
                 </div>
             </div>
             

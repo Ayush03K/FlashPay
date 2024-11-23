@@ -32,7 +32,7 @@ router1.post("/signup",async function(req,res){
         lastName : req.body.lastName
     })
     const userId = user._id;
-
+    const name = user.firstName;
     await Account.create({
         userId,
         balance: 1 + Math.random() * 10000
@@ -43,7 +43,8 @@ router1.post("/signup",async function(req,res){
 
     res.json({
         msg : 'token create successfully',
-        token : token
+        token : token,
+        name
     })
 })
 
@@ -55,7 +56,8 @@ router1.post("/signin",async function(req,res,next){
     username,
     password
   })
-  const name = user.firstName
+  const name = user.firstName;
+  console.log(name);
   if(user){
     console.log(user._id);
     const token = jwt.sign({
@@ -73,8 +75,9 @@ router1.post("/signin",async function(req,res,next){
   }
 })
 
-    router1.get("/find",async function(req,res,next){
-        const filter = req.query.filter || "";
+router1.get("/find",async function(req,res,next){
+    const filter = req.query.filter || "";
+    try{
         const users =await User.find({
             $or : [{
                 firstName : {
@@ -96,7 +99,10 @@ router1.post("/signin",async function(req,res,next){
                 };
             })    
         });
-    })
+    }catch(error){
+        console.log("incorrect input");
+    }
+});
 
 const updateBody = z.object({
     firstName : z.string().optional(),
