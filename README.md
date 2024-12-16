@@ -60,5 +60,3 @@ Contributions are welcome! Fork the repository and submit a pull request.
 This project is currently unlicensed.
 
 ---
-
-You can now use this updated README file for your **FlashPay** project! Let me know if you'd like further modifications.
