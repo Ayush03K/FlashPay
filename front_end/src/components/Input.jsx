@@ -3,7 +3,7 @@ export function Input({label,placeholder,onChange}){
         <div className=" text-left p-1 text-lg font-bold">
             {label}
         </div>
-        <input onChange={onChange} placeholder={placeholder} className="w-full h-9 p-1 border border-gray-300 rounded-md focus:outline-none focus:border-black"/>
+        <input onChange={onChange} placeholder={placeholder} className="w-full h-10 p-2 px-2 border  border-gray-300 rounded-md focus:outline-none "/>
     </div>
     
 }

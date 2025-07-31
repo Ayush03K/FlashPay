@@ -43,9 +43,13 @@ router1.post("/signup",async function(req,res){
 
     res.json({
         msg : 'token create successfully',
-        token : token,
-        name
-    })
+        token : token,name,
+        profile: {
+        userId: userId,
+        username: user.username,
+        firstName: user.firstName,
+        lastName: user.lastName,
+    }})
 })
 
 router1.post("/signin",async function(req,res,next){
@@ -65,8 +69,13 @@ router1.post("/signin",async function(req,res,next){
     },JWT_SECRET)
     //complete uptp signin if i want to get token can do signin to get token and also check the balance in account using postman not just need work on balance frontend
     res.json({
-        token,name
-    })
+        token,name,
+        profile: {
+        userId: user._id,
+        username: user.username,
+        firstName: user.firstName,
+        lastName: user.lastName,
+    }})
   }
   else{
     res.json({
