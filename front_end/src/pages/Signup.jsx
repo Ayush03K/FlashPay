@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function Signup() {
@@ -7,7 +7,7 @@ export default function Signup() {
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+const navigate = useNavigate();
   const handleSignup = async () => {
     try {
       const response = await axios.post("http://localhost:3000/api/v1/user/signup", {
@@ -16,8 +16,10 @@ export default function Signup() {
         username,
         password,
       });
-      localStorage.setItem("token", response.data.token);
-      // Navigate or alert success
+      localStorage.setItem("token",response.data.token)
+        localStorage.setItem("profile", JSON.stringify(profile));
+        console.log(response.data);
+        navigate("/dashboard", {state: {token,profile}});
       console.log("Signup successful");
     } catch (error) {
       console.error("Signup error:", error.response?.data || error.message);

@@ -5,9 +5,30 @@ import Balance from "../components/Balance";
 import SRCard from "../components/SRCard";
 import Recent from "../components/Recent";
 import { useLocation, useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 
 export default function Dashboard() {
   const location = useLocation();
+  const [transactions, setTransactions] = useState([]);
+useEffect(() => {
+  const fetchTransactions = async () => {
+    try {
+      const token = localStorage.getItem("token"); // Or however you store it
+      const res = await axios.get("http://localhost:3000/api/v1/account/transactions", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setTransactions(res.data.transactions);
+      console.log(transactions);
+    } catch (err) {
+      console.error("Failed to fetch transactions:", err);
+    }
+  };
+
+  fetchTransactions();
+}, []);
+
 const profile = location.state?.profile || JSON.parse(localStorage.getItem("profile"));
 
 if (!profile) return <div className="text-white">No user data found</div>;
@@ -44,7 +65,7 @@ const userInitial = firstName && lastName
           <Balance />
           <SRCard />
         </div>
-        <Recent />
+        <Recent transactions={transactions}/>
       </div>
     </div>
   );
