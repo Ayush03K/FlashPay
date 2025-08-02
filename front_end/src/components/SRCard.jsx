@@ -77,10 +77,10 @@ export default function SRCard() {
 
         {/* Panel Content Placeholder */}
         <div className="p-6 h-[calc(100vh-80px)] overflow-y-auto ">
-          <p className="text-gray-300">
+          <div className="text-gray-300">
             {/* You can replace this with a form component */}
             <AllUsers/>
-          </p>
+          </div>
         </div>
       </div>
     </div>

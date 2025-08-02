@@ -13,7 +13,7 @@ export default function AllUsers() {
 const token  = localStorage.getItem("token");
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/v1/user/find?filter=" + filter)
+      .get("https://flashpay-m4uu.onrender.com/api/v1/user/find?filter=" + filter)
       .then((response) => {
         setUsers(response.data.users || []);
       })
@@ -27,7 +27,7 @@ const token  = localStorage.getItem("token");
       alert("Please enter a valid amount.");
       return;
     }
-    axios.post("http://localhost:3000/api/v1/account/transfer", {
+    axios.post("https://flashpay-m4uu.onrender.com/api/v1/account/transfer", {
       to : selectedUser.id,
                 amount
             },{
@@ -49,7 +49,7 @@ const token  = localStorage.getItem("token");
 
   return (
     <div className="p-6 text-white ml-[8%] w-[92%]">
-      <h2 className="text-2xl font-semibold mb-4">All Users</h2>
+      <div className="text-2xl font-semibold mb-4">All Users</div>
       <div className="max-w-md">
         <Input
           placeholder="Search users by name or username"
@@ -62,9 +62,9 @@ const token  = localStorage.getItem("token");
         {users.length === 0 ? (
           <p className="text-gray-400">No users found.</p>
         ) : (
-          users.map((user) => (
+          users.map((user,value) => (
             <div
-              key={user._id}
+              key={value}
               className="p-4 rounded-xl bg-white/5 backdrop-blur-sm flex justify-between items-center hover:bg-white/10 transition"
             >
               <div>

@@ -16,7 +16,7 @@ useEffect(() => {
   const fetchTransactions = async () => {
     try {
       const token = localStorage.getItem("token"); // Or however you store it
-      const res = await axios.get("http://localhost:3000/api/v1/account/transactions", {
+      const res = await axios.get("https://flashpay-m4uu.onrender.com/api/v1/account/transactions", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTransactions(res.data.transactions);

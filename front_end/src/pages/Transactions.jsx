@@ -12,7 +12,7 @@ export default function Transactions() {
     const fetchTransactions = async () => {
       try {
         const token = localStorage.getItem("token"); // or however you're storing JWT
-        const res = await axios.get("http://localhost:3000/api/v1/account/transactions", {
+        const res = await axios.get("https://flashpay-m4uu.onrender.com/api/v1/account/transactions", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

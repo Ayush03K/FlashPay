@@ -7,7 +7,7 @@ export default function Balance() {
     const [balance,setBalance] = useState(0);
     const token  = localStorage.getItem("token");
     useEffect( () => {
-        axios.get("http://localhost:3000/api/v1/account/balance",{
+        axios.get("https://flashpay-m4uu.onrender.com/api/v1/account/balance",{
             headers : {
                 Authorization : `Bearer ${token}`
             }

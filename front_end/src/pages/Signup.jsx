@@ -10,7 +10,7 @@ export default function Signup() {
 const navigate = useNavigate();
   const handleSignup = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/api/v1/user/signup", {
+      const response = await axios.post("https://flashpay-m4uu.onrender.com/api/v1/user/signup", {
         firstName,
         lastName,
         username,
