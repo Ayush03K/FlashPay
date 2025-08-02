@@ -7,6 +7,6 @@ export default defineConfig({
   preview: {
     host: true, 
     port: 4173, // process.env.PORT if needed
-    allowedHosts: ['.'] // Allow all hosts 
+    allowedHosts: ['flashpay-frontend-amws.onrender.com'], // Allow your Render domain
   }
 })
