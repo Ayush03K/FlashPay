@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const { Schema } = mongoose;
-mongoose.connect("mongodb+srv://ayushplay:j0Bfz7rGgXn3jg6c@cluster0.ymmmd.mongodb.net/paytm");
+const MONGODB_URL = process.env.MONGODB_URL;
+mongoose.connect(MONGODB_URL);
 
 const userSchema = new Schema({
     firstName: {
